@@ -9,6 +9,51 @@ PromHouse is a long-term remote storage with built-in clustering and downsamplin
 [ClickHouse](https://clickhouse.yandex). Or, rather, it will be someday.
 Feel free to ~~like, share, retweet,~~ star and watch it, but **do not use it in production** yet.
 
+## Generating the binaries
+If you just want the binaries to play around with, run
+```
+bash make build
+```
+
+## Setting up the dev environment
+This is a go project. You will need to:
+1. Install go
+2. Setup your GOPATH. I recomend using the default (`${HOME}/go`). Add to your `.bashrc` or `.bash_profile`
+
+```bash
+export GOPATH=${HOME}/go
+```
+3. Add the go binary directory to your path. Add to your `.bashrc` or `.bash_profile`
+```bash
+export PATH="${GOPATH}/bin:$PATH"
+```
+4. Checkout this repo under `${GOPATH}/src/github.com/Percona-Lab/PromHouse`. This is important for the dependencies to be picked up correctly. 
+5. You are good to go!
+
+## Compiling
+1. make init
+2. make protos
+3. make install
+
+## Running the tests
+You need the test environment up to run the tests
+1. In a terminal run:
+```
+make up
+```
+2. In a different terminal run:
+```
+make run
+```
+3. In yet another terminal run:
+```
+make tests
+```
+4. Fuzz tests:
+```
+make gofuzz
+```
+
 ## Database Schema
 
 ```sql
